@@ -1,24 +1,24 @@
 installdir = $(DATADIR)/neutrino/locale
 
 locale = \
+	czech.locale \
 	deutsch.locale \
-	english.locale
+	english.locale \
+	francais.locale \
+	italiano.locale \
+	nederlands.locale \
+	polski.locale \
+	portugues.locale \
+	russkij.locale \
+	slovak.locale \
+	suomi.locale \
+	svenska.locale
 
 locale_unmaintained = \
 	unmaintained/bayrisch.locale \
 	unmaintained/bosanski.locale \
 	unmaintained/ch-baslerdeutsch.locale \
-	unmaintained/ch-berndeutsch.locale \
-	unmaintained/czech.locale \
-	unmaintained/francais.locale \
-	unmaintained/italiano.locale \
-	unmaintained/nederlands.locale \
-	unmaintained/polski.locale \
-	unmaintained/portugues.locale \
-	unmaintained/russkij.locale \
-	unmaintained/slovak.locale \
-	unmaintained/suomi.locale \
-	unmaintained/svenska.locale
+	unmaintained/ch-berndeutsch.locale
 
 install_DATA  = $(locale)
 # install_DATA += $(locale_unmaintained)
