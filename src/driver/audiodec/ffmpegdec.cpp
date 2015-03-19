@@ -152,6 +152,7 @@ bool CFfmpegDec::Init(void *_in, const CFile::FileType ft)
 
 	AVInputFormat *input_format = NULL;
 
+#if 0
 	switch (ft) {
 	case CFile::FILE_OGG:
 		input_format = av_find_input_format("ogg");
@@ -171,6 +172,7 @@ bool CFfmpegDec::Init(void *_in, const CFile::FileType ft)
 	default:
 		break;
 	}
+#endif
 
 	int r = avformat_open_input(&avc, "", input_format, NULL);
 	if (r) {

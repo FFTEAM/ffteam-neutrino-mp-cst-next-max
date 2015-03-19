@@ -28,27 +28,6 @@ if BOXTYPE_TRIPLE
 SUBDIRS += lcddisplay
 endif
 
-if USE_TREMOR
-VORBISLIBS = @VORBISIDEC_LIBS@
-else
-VORBISLIBS = -lvorbisfile -lvorbis -logg
-endif
-
-if ENABLE_FLAC
-FLACLIBS = -lFLAC
-else
-FLACLIBS =
-endif
-
-if ENABLE_FFMPEGDEC
-ADEC_LIBS = @SWRESAMPLE_LIBS@
-else
-ADEC_LIBS = @MAD_LIBS@ \
-	@ID3TAG_LIBS@ \
-	$(FLACLIBS) \
-	$(VORBISLIBS)
-endif
-
 bin_PROGRAMS = neutrino rcsim
 
 neutrino_SOURCES = neutrino_menue.cpp neutrino.cpp
@@ -99,12 +78,12 @@ neutrino_LDADD = \
 	$(top_builddir)/lib/libtuxtxt/libtuxtxt.a \
 	$(top_builddir)/lib/libdvbsub/libdvbsub.a \
 	$(top_builddir)/lib/libiw/libiw.a \
+	$(top_builddir)/lib/jsoncpp/libjsoncpp.a \
+	@BLURAY_LIBS@ \
 	@CURL_LIBS@ \
 	@FREETYPE_LIBS@ \
 	@PNG_LIBS@ \
-	@BLURAY_LIBS@ \
 	@LIBCS_LIBS@ \
-	$(ADEC_LIBS) \
 	@SIGC_LIBS@ \
 	-ldvbsi++ \
 	-ljpeg \
@@ -114,6 +93,9 @@ neutrino_LDADD = \
 
 if ENABLE_GRAPHLCD
 neutrino_LDADD += -lglcddrivers -lglcdgraphics -lusb-1.0
+endif
+if ENABLE_SHAIRPLAY
+neutrino_LDADD += -lshairplay
 endif
 if ENABLE_GIFLIB
 neutrino_LDADD += -lgif

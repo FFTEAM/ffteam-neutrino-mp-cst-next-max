@@ -42,10 +42,6 @@
 
 #include <string>
 
-#ifndef ENABLE_FFMPEGDEC
-#include <mad.h>
-#endif
-
 class CAudioMetaData
 {
 public:
@@ -76,10 +72,6 @@ public:
 	unsigned int bitrate; /* overall bitrate, vbr file: current bitrate */
 	unsigned int avg_bitrate; /* average bitrate in case of vbr file */
 	unsigned int samplerate;
-#ifndef ENABLE_FFMPEGDEC
-	enum mad_layer layer;
-	enum mad_mode mode;
-#endif
 	time_t total_time;
 	long audio_start_pos; /* position of first audio frame */
 	bool vbr;
